@@ -1,0 +1,49 @@
+// Styling for event card
+
+$card-divider-background: $my-dark-green ;
+
+.event-card {
+
+	max-width: $max-card-width ;
+	min-width: $min-card-width ;
+
+	@include card-container (
+		#fff											,	// background colour of the card
+		#000											,	// font colour of the card
+		1rem											,	// bottom margin of the card
+		1px solid $my-dark-green	,	// border around the card
+		0px												,	// border radius of the card
+		1px													// box shadow of the card
+	) ;
+
+	.event-card-divider {
+
+		@include card-divider ;
+		color: $white ;
+
+	}
+
+	.card-image {
+
+		img {
+
+			width: 100% ;
+
+		}
+
+		p {
+
+			margin: 0px ;
+			padding: 0px ;
+
+		}
+
+	}
+
+	.event-card-section {
+
+		@include card-section ;
+
+	}
+
+}

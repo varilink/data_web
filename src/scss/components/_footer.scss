@@ -1,0 +1,98 @@
+// Styling for page footers
+
+.footer-data {									// The footer
+
+	background: $my-dark-red;
+	color: $my-light-green;
+	padding: 2rem 0 0;
+
+	> .row {
+
+		margin-bottom: 1rem;
+
+	}
+
+	@include breakpoint(small only) {
+
+		.columns {
+
+			margin-bottom: 1rem;
+
+		}
+
+	}
+
+	a {
+		color: $my-light-green;
+	}
+
+	.footer-data-name {						// "Derby Arts and Theatre Association"
+
+		margin-bottom: 1rem;
+		font-size: 1.5rem;
+
+	}
+
+	.footer-data-tagline {
+
+		position: relative;
+		top: -0.5rem;
+
+	}
+
+	.footer-data-title {						// "Contact and Social Media"
+
+		margin-bottom: 1rem;
+		font-size: 1.25rem;
+
+	}
+
+	.footer-data-block {						// Email details
+
+		display: flex;
+		margin-bottom: 0.5rem;
+
+		.fa {
+
+			font-size: 2rem;
+			margin-right: 1rem;
+
+		}
+
+		p {
+
+			line-height: 1.5rem;
+			padding-bottom: 0.75rem;
+
+		}
+
+	}
+
+	.footer-data-menu-social a {			// Social media menu
+
+		font-size: 1.5rem;
+
+	}
+
+	.footer-data-bottom {
+
+		background: $black;
+		color: $white;
+		padding: 1rem 0;
+
+		.menu {
+			position: relative;
+			left: -1rem;
+		}
+
+		.footer-data-bottom-links {
+
+			a {
+				color: $white;
+			}
+
+		}
+
+	}
+
+}

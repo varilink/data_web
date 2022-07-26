@@ -1,0 +1,97 @@
+@import 'foundation-sites/scss/util/util';
+
+// 1. Global
+// ---------
+
+$foundation-palette: (
+  primary: #4dac71, // (green) - changed from #1779ba (blue)
+  secondary: #767676,
+  success: #3adb76,
+  warning: #ffae00,
+  alert: #cc4b37,
+  information: #ffef96, // add an "information" color accessible via get-color
+);
+
+// Further directly named colors added
+$my_dark_red: #4c1010;
+$my-light-green: lighten(get-color(primary), 45%);
+$my-dark-green: darken(get-color(primary), 20%);
+
+// Same as in foundation-sites but defined early as it's referenced here
+$dark-gray: #8a8a8a;
+
+// Preferred Google font
+// Replaces 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif
+$body-font-family: "Lato", Helvetica, sans-serif;
+
+// 4. Base Typography
+// ------------------
+
+// Changed from $medium-gray for greater legibility
+$header-small-font-color: $dark-gray;
+
+// 7. Accordion
+// ------------
+
+// $accordion-title-font-size increased, was rem-calc(12)
+$accordion-title-font-size: rem-calc(18);
+
+// 14. Card
+// --------
+
+// Add new min and max card width variables for use in custom card components
+$min-card-width: 305px;
+$max-card-width: 400px;
+
+// 17. Dropdown
+// ------------
+
+// Remove dropdown padding, was 1rem
+$dropdown-padding: 0;
+// Remove dropdown border, was 1px solid $medium-gray
+$dropdown-border: 0;
+
+// 20. Forms
+// ---------
+
+// Input placeholders darkened for legibility, were medium gray
+$input-placeholder-color: $dark-gray;
+
+// 27. Pagination
+// --------------
+
+// Pagination font size increased from rem-calc(14)
+$pagination-font-size: rem-calc(16);
+
+// Pagination margin bottom removed, was $global-margin
+$pagination-margin-bottom: 0;
+
+// Retain pagination on mobile displays, was false
+$pagination-mobile-items: true;
+
+// 50. Table
+// ---------
+
+// Table stripe on odd rather than even
+$table-stripe: odd;
+
+// 53. Title Bar
+// -------------
+
+// Make title bar background transparent not $black
+$titlebar-background: transparent;
+
+// 55. Top Bar
+// -----------
+
+// Remove topbar padding, was 0.5rem
+$topbar-padding: 0;
+
+// Make topbar transparent not $light-gray
+$topbar-background: transparent;
+
+// 56. Xy Grid
+// -----------
+
+// Don't use the new xy grid
+$xy-grid: false;

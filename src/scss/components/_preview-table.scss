@@ -1,0 +1,14 @@
+// Styling for previewing printed table listings
+
+$table-background: lighten(get-color(secondary), 85% );
+$table-border: 1px solid rgba($black, 0.25);
+
+table {
+
+  &.preview {
+
+    @include table ( none ) ;
+
+  }
+
+}

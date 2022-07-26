@@ -1,0 +1,9 @@
+// Dropdown pane for venue addresses
+
+$dropdown-padding: 0.5rem;
+
+.dropdown-address-pane {
+
+  @include dropdown-container ;
+
+}

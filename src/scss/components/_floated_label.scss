@@ -1,0 +1,56 @@
+// Styling for floated labels on form inputs
+
+.floated-label-wrapper {
+
+	position: relative ; // Needed, not sure why
+
+	label {
+
+		color: $primary-color ;
+		font-size: 1em ;
+		font-weight: 600 ;
+		left: 0.25em ; // Nicely aligns with the left edge of the input field
+		opacity: 0 ;
+		padding: 0 0.25em ;
+		position: absolute ; // Needed, not sure why
+		top: 2em ;
+		transition: all 0.25s linear ;
+		z-index: -1 ;
+
+		&.show {
+
+			font-size: 0.75em ;
+			opacity: 1 ;
+			top: -1.5em ;
+			z-index: 1 ;
+			transition : all 0.25s linear ;
+
+			&.for-select {
+
+				top: -1em ;
+
+			}
+
+		}
+
+	}
+
+	input[type=text] ,
+	input[type=email] ,
+	input[type=password] ,
+	textarea {
+
+		/* border-radius: 4px ; */
+		margin-top: 1.5em ;
+		padding: 0.5em ;
+
+	}
+
+	select {
+
+		margin-top: 0.5em ;
+		padding-left: 0.2em ;
+
+	}
+
+}

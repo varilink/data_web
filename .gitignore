@@ -1,2 +1,4 @@
-/html/css/
-/html/docs/
+dist
+node_modules
+src/img/shutterstock_*
+src/docs

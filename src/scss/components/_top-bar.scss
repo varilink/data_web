@@ -1,0 +1,148 @@
+// Navigation for derbyartsandtheatre.org.uk
+
+$top-bar-custom-hover: darken($white, 20%);
+
+// Prevention of POUC
+
+.no-js {
+
+	@include breakpoint (small only) {
+
+		.top-bar-hero-custom, .my-top-bar-wrapper {
+			display: none;
+		}
+
+	}
+
+	@include breakpoint (medium) {
+
+		.title-bar {
+			display: none;
+		}
+
+	}
+
+}
+
+// The top bar specifically for overlay on the hero
+.top-bar-hero-custom {
+
+	.menu {
+
+		background: transparent;
+
+		a {
+			color: $white;
+			&:hover {
+				color: $top-bar-custom-hover;
+			}
+		}
+	}
+
+}
+
+.top-bar-wrapper {
+
+	background: url('./components/hero.jpg') center ;
+	background-size: cover ;
+
+}
+
+.top-bar {
+
+	.menu {
+
+		background: transparent ;
+		color: white ;
+
+		a {
+			color: white ;
+		}
+
+		.is-active {
+			font-weight: bold ;
+		}
+
+	}
+
+	&.upper {
+
+		.menu {
+
+			a, li {
+					margin-bottom: 1px;
+					margin-top: 2px;
+					padding-bottom: 2px;
+					padding-top: 2px;
+			}
+
+		}
+
+	}
+
+	&.lower {
+
+		.menu {
+
+			a, li {
+					margin-bottom: 2px;
+					margin-top: 1px;
+					padding-bottom: 2px;
+					padding-top: 2px;
+			}
+
+		}
+
+	}
+
+}
+
+
+// The top bar for all other (than the hero) pages
+
+.my-top-bar-wrapper {
+
+	background: url('./components/hero.jpg') center;
+	background-size: cover;
+
+	.my-top-bar {
+
+		background: transparent;
+
+		.menu {
+
+			background: transparent;
+
+			a {
+				color: $white;
+				&:hover { color: $top-bar-custom-hover }
+				margin-bottom: 2px;
+				margin-top: 2px;
+				padding-bottom: 2px;
+				padding-top: 2px;
+			}
+
+			li {
+				color: $white;
+				margin-bottom: 2px;
+				margin-top: 2px;
+				padding-bottom: 2px;
+				padding-top: 2px;
+			}
+
+			.is-active > a {
+				background: transparent;
+				text-decoration: underline;
+			}
+
+			.topbar-data-current {
+
+				text-decoration: underline;
+
+			}
+
+		}
+
+	}
+
+}

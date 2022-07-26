@@ -1,0 +1,56 @@
+// Home page Hero stying
+
+$hero-height: 55vh;
+
+.hero-image-custom {
+
+	// Outermost wrapper of the hero, used to contain the background image
+
+	// Express the image URL relative to app.css
+	background: url('./components/hero.jpg') top right no-repeat;
+	background-size: cover;
+
+	@media screen and (min-width: 40em) {
+
+		background-position: center center;
+
+	}
+
+}
+
+.hero-body-custom {
+
+	align-items: center;
+	display: flex;
+	height: $hero-height;
+	margin: 0 auto;
+	max-width: $global-width;
+	padding-left: 5%;
+	padding-right: 5%;
+
+}
+
+.hero-contents-custom {
+
+	h1 {
+		color: $my-light-green;
+		font-size: 32px;
+	}
+
+	p {
+		color: $my-light-green;
+	}
+
+	.button.round {
+		border-color: $my-light-green;
+		border-radius: 5000px;
+		border-width: 2px;
+		color: $my-light-green;
+		font-size: 16px;
+		margin-bottom: 0;
+	}
+
+	@media screen and (min-width: 40em) {
+		padding-left: 50%;
+	}
+}

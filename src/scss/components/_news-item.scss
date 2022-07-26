@@ -1,0 +1,24 @@
+// News item card styling
+
+$card-divider-background: $my-light-green ;
+
+.news-item {
+
+	max-width: $max-card-width ;
+	min-width: $min-card-width ;
+
+	@include card-container ( #fff , #000 , 0px , 0px , 0px , 1px ) ;
+
+	.news-item-divider {
+
+		@include card-divider ;
+
+	}
+
+	.news-item-section {
+
+		@include card-section ;
+
+	}
+
+}
