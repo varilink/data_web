@@ -1,4 +1,27 @@
-dist
-node_modules
-src/img/shutterstock_*
-src/docs/agm2019
+# ------------------------------------------------------------------------------
+# .gitignore
+# ------------------------------------------------------------------------------
+
+# the npm cache folder
+/.npm
+# installed dependencies for this project
+/node_modules
+
+# generated web service assets
+/dist
+
+# "source" images that are actually generated from the contents of the /gimp
+# folder using the "Tools - Gimp" tool and so don't need to be tracked.
+/src/img/events-listing.webp
+/src/img/hero.webp
+/src/img/logo.webp
+/src/img/member-societies.webp
+/src/img/the-diary-scheme.webp
+
+# The various social media image files that are generated using Gimp and so do
+# not need to be tracked.
+/gimp/social-media-img/
+
+# The documents that were shared ahead of the 2019 AGM and are not for public
+# display.
+/src/docs/agm2019
