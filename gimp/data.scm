@@ -6,26 +6,25 @@
 
 ;; DATA logo files provided by Tom
 (define logoWithNameImage (car (gimp-file-load RUN-NONINTERACTIVE
-      "logo(with name).jpg" "logo(with name).jpg"
+      "src/logo(with name).jpg" "src/logo(with name).jpg"
 )))
 (define logoWithoutNameImage (car (gimp-file-load RUN-NONINTERACTIVE
-      "logo(without name).jpg" "logo(without name).jpg"
+      "src/logo(without name).jpg" "src/logo(without name).jpg"
 )))
 ;; Diary, masks, seats and tickets images sourced via the Varilink Computing
 ;; Ltd Shutterstock account
 (define diaryImage (car (gimp-file-load RUN-NONINTERACTIVE
-  "shutterstock_308941397.eps" "shutterstock_308941397.eps"
+  "src/shutterstock_308941397.eps" "src/shutterstock_308941397.eps"
 )))
 (define masksImage (car (gimp-file-load RUN-NONINTERACTIVE
-  "shutterstock_163896773.eps" "shutterstock_163896773.eps"
+  "src/shutterstock_163896773.eps" "src/shutterstock_163896773.eps"
 )))
 (define seatsImage (car (gimp-file-load RUN-NONINTERACTIVE
-  "shutterstock_317742068.jpg" "shutterstock_317742068.jpg"
+  "src/shutterstock_317742068.jpg" "src/shutterstock_317742068.jpg"
 )))
 (define ticketsImage (car (gimp-file-load RUN-NONINTERACTIVE
-  "shutterstock_97049318.eps" "shutterstock_97049318.eps"
+  "src/shutterstock_97049318.eps" "src/shutterstock_97049318.eps"
 )))
-
 
 ;; logo image used in the footer of DATA website pages
 (let*
@@ -42,8 +41,8 @@
     RUN-NONINTERACTIVE ; Interactive, non-interactive
     footerLogoImage    ; Input image
     footerLogoDrawable ; Drawable to save
-    "/img/logo.webp"   ; The name of the file to save the image to
-    "/img/logo.webp"   ; The name entered
+    "dest/logo.webp"   ; The name of the file to save the image to
+    "dest/logo.webp"   ; The name entered
     0                  ; preset
     0                  ; Use lossless encoding
     90                 ; Quality of the image
@@ -74,20 +73,20 @@
   (gimp-image-scale twitterLogoImage 400 400)
 
   (file-jpeg-save
-    RUN-NONINTERACTIVE                    ; run-mode
-    twitterLogoImage                      ; Input image
-    twitterLogoDrawable                   ; Drawable to save
-    "/social-media-img/twitter-logo.jpeg" ; filename
-    "/social-media-img/twitter-logo.jpeg" ; raw-filename
-    0.90                                  ; quality
-    0                                     ; smoothing
-    TRUE                                  ; optimize
-    TRUE                                  ; progressive
-    ""                                    ; comment
-    2                                     ; subsmp (best quality)
-    FALSE                                 ; baseline
-    FALSE                                 ; restart
-    0                                     ; dct (integer method)
+    RUN-NONINTERACTIVE               ; run-mode
+    twitterLogoImage                 ; Input image
+    twitterLogoDrawable              ; Drawable to save
+    "social-media/twitter-logo.jpeg" ; filename
+    "social-media/twitter-logo.jpeg" ; raw-filename
+    0.90                             ; quality
+    0                                ; smoothing
+    TRUE                             ; optimize
+    TRUE                             ; progressive
+    ""                               ; comment
+    2                                ; subsmp (best quality)
+    FALSE                            ; baseline
+    FALSE                            ; restart
+    0                                ; dct (integer method)
   )
 
   (gimp-image-delete twitterLogoImage)
@@ -103,20 +102,20 @@
   )
 
   (file-jpeg-save
-    RUN-NONINTERACTIVE                     ; run-mode
-    facebookLogoImage                      ; Input image
-    facebookLogoDrawable                   ; Drawable to save
-    "/social-media-img/facebook-logo.jpeg" ; filename
-    "/social-media-img/facebook-logo.jpeg" ; raw-filename
-    0.90                                   ; quality
-    0                                      ; smoothing
-    TRUE                                   ; optimize
-    TRUE                                   ; progressive
-    ""                                     ; comment
-    2                                      ; subsmp (best quality)
-    FALSE                                  ; baseline
-    FALSE                                  ; restart
-    0                                      ; dct (integer method)
+    RUN-NONINTERACTIVE                ; run-mode
+    facebookLogoImage                 ; Input image
+    facebookLogoDrawable              ; Drawable to save
+    "social-media/facebook-logo.jpeg" ; filename
+    "social-media/facebook-logo.jpeg" ; raw-filename
+    0.90                              ; quality
+    0                                 ; smoothing
+    TRUE                              ; optimize
+    TRUE                              ; progressive
+    ""                                ; comment
+    2                                 ; subsmp (best quality)
+    FALSE                             ; baseline
+    FALSE                             ; restart
+    0                                 ; dct (integer method)
   )
 
   (gimp-image-delete facebookLogoImage)
@@ -133,17 +132,28 @@
     )))
   )
 
-  (gimp-image-crop ticketsImage
+  (gimp-image-crop eventsListingImage
     625 490 0 70 ; width, height, offset x, offset y
   )
-  (gimp-image-scale ticketsImage 159 125)
+  (gimp-context-set-background '(255.0 255.0 255.0))
+  (gimp-edit-bucket-fill
+    eventsListingDrawable ; drawable
+    BUCKET-FILL-BG        ; fill-mode
+    LAYER-MODE-NORMAL     ; paint-mode
+    100                   ; opacity
+    15                    ; threshold
+    FALSE                 ; sample-merged
+    10                    ; x (seed)
+    10                    ; y (seed)
+  )
+  (gimp-image-scale eventsListingImage 159 125)
 
   (file-webp-save
     RUN-NONINTERACTIVE         ; Interactive, non-interactive
     eventsListingImage         ; Input image
     eventsListingDrawable      ; Drawable to save
-    "/img/events-listing.webp" ; The name of the file to save the image to
-    "/img/events-listing.webp" ; The name entered
+    "dest/events-listing.webp" ; The name of the file to save the image to
+    "dest/events-listing.webp" ; The name entered
     0                          ; preset
     0                          ; Use lossless encoding
     90                         ; Quality of the image
@@ -186,8 +196,8 @@
     RUN-NONINTERACTIVE           ; Interactive, non-interactive
     memberSocietiesImage         ; Input image
     memberSocietiesDrawable      ; Drawable to save
-    "/img/member-societies.webp" ; The name of the file to save the image to
-    "/img/member-societies.webp" ; The name entered
+    "dest/member-societies.webp" ; The name of the file to save the image to
+    "dest/member-societies.webp" ; The name entered
     0                            ; preset
     0                            ; Use lossless encoding
     90                           ; Quality of the image
@@ -224,8 +234,8 @@
     RUN-NONINTERACTIVE           ; Interactive, non-interactive
     diarySchemeImage             ; Input image
     diarySchemeDrawable          ; Drawable to save
-    "/img/the-diary-scheme.webp" ; The name of the file to save the image to
-    "/img/the-diary-scheme.webp" ; The name entered
+    "dest/the-diary-scheme.webp" ; The name of the file to save the image to
+    "dest/the-diary-scheme.webp" ; The name entered
     0                            ; preset
     0                            ; Use lossless encoding
     90                           ; Quality of the image
@@ -255,25 +265,21 @@
 
   (gimp-image-scale heroImage 1200 800)
 
-  (file-webp-save
-    RUN-NONINTERACTIVE ; Interactive, non-interactive
+  (file-jpeg-save
+    RUN-NONINTERACTIVE ; run-mode
     heroImage          ; Input image
     heroDrawable       ; Drawable to save
-    "/img/hero.webp"   ; The name of the file to save the image to
-    "/img/hero.webp"   ; The name entered
-    0                  ; preset
-    0                  ; Use lossless encoding
-    90                 ; Quality of the image
-    100                ; Quality of the image's alpha channel
-    0                  ; Use layers for animation
-    0                  ; Loop animation infinitely
-    0                  ; Minimize animation size
-    0                  ; Maximum distance between key-frames
-    1                  ; Toggle saving exif data
-    1                  ; Toggle saving iptc data
-    1                  ; Toggle saving xmp data
-    0                  ; Delay
-    0                  ; Force delay on all frames
+    "dest/hero.jpg"    ; filename
+    "dest/hero.jpg"    ; raw-filename
+    0.90               ; quality
+    0                  ; smoothing
+    TRUE               ; optimize
+    TRUE               ; progressive
+    ""                 ; comment
+    2                  ; subsmp (best quality)
+    FALSE              ; baseline
+    FALSE              ; restart
+    0                  ; dct (integer method)
   )
 
   (gimp-image-delete heroImage)
@@ -297,8 +303,8 @@
     RUN-NONINTERACTIVE  ; run-mode
     emailHeaderImage    ; Input image
     emailHeaderDrawable ; Drawable to save
-    "/img/data.jpg"     ; filename
-    "/img/data.jpg"     ; raw-filename
+    "dest/data.jpg"     ; filename
+    "dest/data.jpg"     ; raw-filename
     0.90                ; quality
     0                   ; smoothing
     TRUE                ; optimize
@@ -330,20 +336,20 @@
   (gimp-image-scale twitterBannerImage 600 200)
 
   (file-jpeg-save
-    RUN-NONINTERACTIVE                      ; run-mode
-    twitterBannerImage                      ; Input image
-    twitterBannerDrawable                   ; Drawable to save
-    "/social-media-img/twitter-banner.jpeg" ; filename
-    "/social-media-img/twitter-banner.jpeg" ; raw-filename
-    0.90                                    ; quality
-    0                                       ; smoothing
-    TRUE                                    ; optimize
-    TRUE                                    ; progressive
-    ""                                      ; comment
-    2                                       ; subsmp (best quality)
-    FALSE                                   ; baseline
-    FALSE                                   ; restart
-    0                                       ; dct (integer method)
+    RUN-NONINTERACTIVE                 ; run-mode
+    twitterBannerImage                 ; Input image
+    twitterBannerDrawable              ; Drawable to save
+    "social-media/twitter-banner.jpeg" ; filename
+    "social-media/twitter-banner.jpeg" ; raw-filename
+    0.90                               ; quality
+    0                                  ; smoothing
+    TRUE                               ; optimize
+    TRUE                               ; progressive
+    ""                                 ; comment
+    2                                  ; subsmp (best quality)
+    FALSE                              ; baseline
+    FALSE                              ; restart
+    0                                  ; dct (integer method)
   )
 
   (gimp-image-delete twitterBannerImage)
