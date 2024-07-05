@@ -132,21 +132,22 @@
     )))
   )
 
+  (gimp-image-scale eventsListingImage 184 184)
+
   (gimp-image-crop eventsListingImage
-    625 490 0 70 ; width, height, offset x, offset y
+    184 125 0 30 ; width, height, offset x, offset y
   )
-  (gimp-context-set-background '(255.0 255.0 255.0))
-  (gimp-edit-bucket-fill
-    eventsListingDrawable ; drawable
-    BUCKET-FILL-BG        ; fill-mode
-    LAYER-MODE-NORMAL     ; paint-mode
-    100                   ; opacity
-    15                    ; threshold
-    FALSE                 ; sample-merged
-    10                    ; x (seed)
-    10                    ; y (seed)
-  )
-  (gimp-image-scale eventsListingImage 159 125)
+;  (gimp-context-set-background '(255.0 255.0 255.0))
+;  (gimp-edit-bucket-fill
+;    eventsListingDrawable ; drawable
+;    BUCKET-FILL-BG        ; fill-mode
+;    LAYER-MODE-NORMAL     ; paint-mode
+;    100                   ; opacity
+;    15                    ; threshold
+;    FALSE                 ; sample-merged
+;    10                    ; x (seed)
+;    10                    ; y (seed)
+;  )
 
   (file-webp-save
     RUN-NONINTERACTIVE             ; Interactive, non-interactive
@@ -183,14 +184,16 @@
     )))
   )
 
-  (gimp-image-crop memberSocietiesImage
-    511 390 0 0 ; width, height, offset x, offset y
-  )
   (gimp-image-resize memberSocietiesImage
-    540 400 15 10 ; width, height, offset x, offset y
+    600 500 45 10 ; width, height, offset x, offset y
   )
   (gimp-layer-resize-to-image-size memberSocietiesDrawable)
-  (gimp-image-scale memberSocietiesImage 169 125)
+
+  (gimp-image-scale memberSocietiesImage 184 153)
+
+  (gimp-image-crop memberSocietiesImage
+    184 125 0 0 ; width, height, offset x, offset y
+  )
 
   (file-webp-save
     RUN-NONINTERACTIVE               ; Interactive, non-interactive
@@ -225,10 +228,10 @@
     (diarySchemeDrawable (car (gimp-image-get-active-layer diarySchemeImage)))
   )
 
+  (gimp-image-scale diarySchemeImage 215 215)
   (gimp-image-crop diarySchemeImage
-    1111 646 0 232 ; width, height, offset x, offset y
+    215 125 0 45 ; width, height, offset x, offset y
   )
-  (gimp-image-scale diarySchemeImage 215 125)
 
   (file-webp-save
     RUN-NONINTERACTIVE               ; Interactive, non-interactive
@@ -254,6 +257,8 @@
   (gimp-image-delete diarySchemeImage)
 
 )
+
+(gimp-image-delete logoWithNameImage)
 
 ;; hero image for the website
 (let*
@@ -294,10 +299,10 @@
     (emailHeaderDrawable (car (gimp-image-get-active-layer emailHeaderImage)))
   )
 
+  (gimp-image-scale emailHeaderImage 375 250)
   (gimp-image-crop emailHeaderImage
-    2432 2432 0 0 ; width, height, offset x, offset y
+    250 250 0 0 ; width, height, offset x, offset y
   )
-  (gimp-image-scale emailHeaderImage 250 250)
 
   (file-jpeg-save
     RUN-NONINTERACTIVE  ; run-mode
@@ -330,10 +335,10 @@
     )))
   )
 
+  (gimp-image-scale twitterBannerImage 600 400)
   (gimp-image-crop twitterBannerImage
-    3648 1216 0 610 ; width, height, offset x, offset y
+    600 200 0 100 ; width, height, offset x, offset y
   )
-  (gimp-image-scale twitterBannerImage 600 200)
 
   (file-jpeg-save
     RUN-NONINTERACTIVE           ; run-mode
@@ -356,7 +361,6 @@
 
 )
 
-(gimp-image-delete logoWithNameImage)
 (gimp-image-delete logoWithoutNameImage)
 (gimp-image-delete diaryImage)
 (gimp-image-delete masksImage)
