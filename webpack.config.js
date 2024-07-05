@@ -31,7 +31,7 @@ module.exports = [
     plugins: [
       new CopyPlugin({
         patterns: [
-          { from: 'gimp/dest', to: '../img' },
+          { from: 'media/website', to: '../img' },
           { from: 'src/img/', to: '../img' },
           { from: 'src/docs/', to: '../docs' },
         ],
