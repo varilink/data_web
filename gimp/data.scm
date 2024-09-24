@@ -62,6 +62,39 @@
 
 )
 
+;; logo used in PDF one page flyer
+
+(let*
+  
+  (
+    (footerLogoImage (car (gimp-image-duplicate logoWithoutNameImage)))
+    (footerLogoDrawable (car (gimp-image-get-active-layer footerLogoImage)))
+  )
+
+  (gimp-image-scale footerLogoImage 125 125)
+  (gimp-image-crop footerLogoImage 125 90 0 15)
+
+  (file-jpeg-save
+    RUN-NONINTERACTIVE  ; Interactive, non-interactive
+    footerLogoImage     ; Input image
+    footerLogoDrawable  ; Drawable to save
+    "/website/logo.jpg" ; The name of the file to save the image to
+    "/website/logo.jpg" ; The name entered
+    0.90                ; quality
+    0                   ; smoothing
+    TRUE                ; optimize
+    TRUE                ; progressive
+    ""                  ; comment
+    2                   ; subsmp (best quality)
+    FALSE               ; baseline
+    FALSE               ; restart
+    0                   ; dct (integer method)
+  )
+
+  (gimp-image-delete footerLogoImage)
+
+)
+
 ;; logo used in DATA Twitter profile
 (let*
 
