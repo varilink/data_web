@@ -137,17 +137,15 @@
   (gimp-image-crop eventsListingImage
     184 125 0 30 ; width, height, offset x, offset y
   )
-;  (gimp-context-set-background '(255.0 255.0 255.0))
-;  (gimp-edit-bucket-fill
-;    eventsListingDrawable ; drawable
-;    BUCKET-FILL-BG        ; fill-mode
-;    LAYER-MODE-NORMAL     ; paint-mode
-;    100                   ; opacity
-;    15                    ; threshold
-;    FALSE                 ; sample-merged
-;    10                    ; x (seed)
-;    10                    ; y (seed)
-;  )
+
+  (gimp-context-set-sample-threshold-int 15)
+
+  (gimp-drawable-edit-bucket-fill
+    eventsListingDrawable ; drawable
+    FILL-WHITE            ; fill-type
+    10                    ; x (seed)
+    10                    ; y (seed)
+  )
 
   (file-webp-save
     RUN-NONINTERACTIVE             ; Interactive, non-interactive
