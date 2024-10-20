@@ -1,31 +1,138 @@
+// -----------------------------------------------------------------------------
+// webpack.config.js
+// -----------------------------------------------------------------------------
+
+/*
+The is the webpack configuration file for building the client Javascript and CSS
+bundles used by the front-end of the DATA website. These are organised into two
+modules, main and tinymce. The main module is used throughout the website
+whereas the tinymce module is only used on the single page within the site's
+admin interface that uses the TinyMCE editor.
+*/
+
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 
-module.exports = [
+module.exports = {
 
-  // Main Javascript module, used throughout the site
+  entry: {
+    main: path.resolve(__dirname, 'src/js/main.js'),
+    tinymce: path.resolve(__dirname, 'src/js/tinymce.js'),
+  },
+
+  output: {
+    filename: '[name].js',
+    path: path.resolve(__dirname, 'dist/js'),
+  },
+
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        exclude: [
+          /content\.inline\.css$/,
+          /skin.css$/,
+        ],
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+      {
+        test: /content\.inline\.css$/,
+        type: 'asset/resource',
+        generator: {
+          filename: '../css/[base]'
+        },
+      },
+      {
+        test: /skin\.css$/,
+        type: 'asset/resource',
+        generator: {
+          filename: '../css/[base]'
+        },
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+      },
+      {
+        test: /\.jpg$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: '../img/[base]'
+        },
+      },
+      {
+        test: /\.png$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: '../img/jquery-ui/[base]'
+        },
+      },
+      {
+        test: /\.(ttf|woff2)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: '../webfonts/[base]'
+        },
+      },
+    ],
+  },
+
+  plugins: [
+    new CopyPlugin({
+      patterns: [
+        { from: 'media/website/', to: '../img/' },
+        { from: 'src/img/', to: '../img/' },
+        { from: 'src/docs/', to: '../docs/' },
+      ],
+    }),
+    new MiniCssExtractPlugin({
+      filename: '../css/[name].css',
+    }),
+  ],
+
+  resolve: {
+    modules: [
+      './',
+      path.resolve(__dirname, 'node_modules/jquery-ui/themes/base'),
+      path.resolve(__dirname, 'node_modules'),
+    ]
+  }
+
+}
+
+/*
+  // Javascript bundle for the main module
   {
     entry: './src/js/main.js',
     output: {
-      filename: 'main.js',
+      filename: 'main.min.js',
       path: path.resolve(__dirname, 'dist/js'),
     },
-    mode: 'production',
   },
 
-  // TinyMCE Javascript module, used only in the site's admin interface
+  // Javascript bundle for the TinyMCE module
   {
     entry: './src/js/tinymce.js',
     output: {
-      filename: 'tinymce.js',
+      filename: 'tinymce.min.js',
       path: path.resolve(__dirname, 'dist/js'),
     },
-    mode: 'production',
+    module: {
+      rules: [
+        {
+          test: /\.css$/,
+          use: [MiniCssExtractPlugin.loader, 'css-loader'],
+          type: 'css',
+          generator: {
+            filename: '[hash][ext][query]',
+          },
+        },
+      ],
+    }
   },
 
-  // Main CSS module
+  // CSS bundle for the main module
   {
     entry: './src/scss/main.scss',
     plugins: [
@@ -71,19 +178,23 @@ module.exports = [
         },
       ],
     },
-    mode: 'production',
   },
 
-  // TinyMCE CSS module, used only in the site's admin interface
+  // CSS bundle for the TinyMCE module
   {
     entry: './src/css/tinymce.css',
-    plugins: [new MiniCssExtractPlugin(), new RemoveEmptyScriptsPlugin()],
+    plugins: [
+      new MiniCssExtractPlugin(),
+    //  new RemoveEmptyScriptsPlugin()
+    ],
     output: {
-      filename: 'tinymce.js',
+      filename: 'tinymce.css',
       path: path.resolve(__dirname, 'dist/css'),
     },
     resolve: {
-      modules: ['node_modules'],
+      modules: [
+        path.resolve(__dirname, 'node_modules'),
+      ],
     },
     module: {
       rules: [
@@ -107,7 +218,5 @@ module.exports = [
         },
       ],
     },
-    mode: 'production',
   },
-
-]
+*/

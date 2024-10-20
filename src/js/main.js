@@ -1,3 +1,5 @@
+import 'scss/main.scss';
+
 // Both jquery and what-input are required by foundation-sites
 import $ from 'jquery';
 import whatInput from 'what-input';
