@@ -7,7 +7,7 @@ $hero-height: 55vh;
 	// Outermost wrapper of the hero, used to contain the background image
 
 	// Express the image URL relative to main.css
-	background: url('../../media/website/hero.jpg') top right no-repeat;
+	background: url('media/website/hero.jpg') top right no-repeat;
 	background-size: cover;
 
 	@media screen and (min-width: 40em) {
