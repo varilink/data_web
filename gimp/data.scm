@@ -26,7 +26,6 @@
   "src/shutterstock_97049318.eps" "src/shutterstock_97049318.eps"
 )))
 
-;; logo image used in the footer of DATA website pages
 (let*
   
   (
@@ -36,6 +35,8 @@
 
   (gimp-image-scale footerLogoImage 175 175)
   (gimp-image-crop footerLogoImage 175 125 0 25)
+
+  ;; logo image used in the footer of DATA website pages
 
   (file-webp-save
     RUN-NONINTERACTIVE   ; Interactive, non-interactive
@@ -56,6 +57,29 @@
     1                    ; Toggle saving xmp data
     0                    ; Delay
     0                    ; Force delay on all frames
+  )
+
+  ;; JPEG version of the logo image used in the footer of DATA website pages,
+  ;; which we need for the printed listings since the conversion to PDF does not
+  ;; support the WebP format.
+
+  (gimp-image-scale footerLogoImage 140 100)
+
+  (file-jpeg-save
+    RUN-NONINTERACTIVE  ; run-mode
+    footerLogoImage     ; image
+    footerLogoDrawable  ; drawable
+    "/website/logo.jpg" ; filename
+    "/website/logo.jpg" ; raw-filename
+    0.90                ; quality
+    0                   ; smoothing
+    TRUE                ; optimize
+    TRUE                ; progressive
+    ""                  ; comment
+    2                   ; subsmp (best quality)
+    FALSE               ; baseline
+    FALSE               ; restart
+    0                   ; dct (INTEGER)
   )
 
   (gimp-image-delete footerLogoImage)
