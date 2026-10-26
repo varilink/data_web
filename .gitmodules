@@ -1,0 +1,6 @@
+[submodule "tools/node"]
+	path = tools/node
+	url = git@github.com:varilink/tools_node.git
+[submodule "tools/gimp"]
+	path = tools/gimp
+	url = git@github.com:varilink/tools_gimp.git
